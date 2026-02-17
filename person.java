@@ -1,8 +1,6 @@
 public class person{
     //fields
-
     private int endStation;
-
 
     //constructor
     public person(int endStation){
