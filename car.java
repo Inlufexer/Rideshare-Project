@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Car {
     //fields
-    private int currPer;
     private int maxPer;
     private int currStat;
     private int endStat;
@@ -11,10 +10,10 @@ public class Car {
 
     //constructor
     public Car(int currStat, int endStat){
-        currPer = 0;
         maxPer = 3;
         this.currStat = currStat;
         this.endStat = endStat;
+        people = new ArrayList<Person>();
         if(endStat > currStat){
             dir = 1;
         }
@@ -28,11 +27,34 @@ public class Car {
         currStat += dir;
     }
 
-    public void addPassenger(Person person){
+    public void addPassenger(ArrayList<Person> people){
+        people.addAll(people);
+    }
 
+    public ArrayList<Person> dropPassenger(int station){
+        ArrayList<Person> droppedOff = new ArrayList<Person>();
+        if(station == endStat){
+            return people;
+        }
+        else{
+            for(int i = 0; i < people.size(); i++){
+                if(currStat == people.get(i).getStation()){
+                    droppedOff.add(people.get(i));
+                }
+            }
+        }
+        return droppedOff;
+    }
+
+    public ArrayList<Person> passengerHandle(int station, ArrayList<Person> people){
+        ArrayList<Person> droppedOff = new ArrayList<Person>();
+        addPassenger(people);
+        droppedOff = dropPassenger(station);
+        return droppedOff;
     }
 
     public boolean full(){
-        return currPer == maxPer;
+        return people.size() == maxPer;
     }
+
 }
