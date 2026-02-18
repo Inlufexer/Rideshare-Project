@@ -1,16 +1,16 @@
 import java.util.*;
 
-public class car {
+public class Car {
     //fields
     private int currPer;
     private int maxPer;
     private int currStat;
     private int endStat;
     private int dir;
-    private ArrayList<person> people;
+    private ArrayList<Person> people;
 
     //constructor
-    public car(int currStat, int endStat){
+    public Car(int currStat, int endStat){
         currPer = 0;
         maxPer = 3;
         this.currStat = currStat;
@@ -21,5 +21,18 @@ public class car {
         else{
             dir = -1;
         }
+    }
+
+    //methods
+    public void move(){
+        currStat += dir;
+    }
+
+    public void addPassenger(Person person){
+
+    }
+
+    public boolean full(){
+        return currPer == maxPer;
     }
 }

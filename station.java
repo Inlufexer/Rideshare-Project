@@ -1,3 +1,3 @@
-public class station {
+public class Station {
     
 }

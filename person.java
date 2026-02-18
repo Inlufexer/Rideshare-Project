@@ -1,9 +1,9 @@
-public class person{
+public class Person{
     //fields
     private int endStation;
 
     //constructor
-    public person(int endStation){
+    public Person(int endStation){
         this.endStation = endStation;
     }
 
