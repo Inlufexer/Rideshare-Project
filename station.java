@@ -47,7 +47,7 @@ public class Station {
         }
     }
 
-    public void sendPassenders(){
+    public void sendPassengers(){
         for(int i = 0; i < carsWaiting.size() - 1; i++){
             ArrayList<Person> loading = new ArrayList<Person>();
             if(carsWaiting.get(i).getDir() == 1){
