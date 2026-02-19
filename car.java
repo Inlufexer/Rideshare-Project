@@ -9,6 +9,12 @@ public class Car {
     private ArrayList<Person> people;
 
     //constructor
+
+    /**
+     * 
+     * @param currStat Station at which the car is located
+     * @param endStat Station at which the car ends
+     */
     public Car(int currStat, int endStat){
         maxPer = 3;
         this.currStat = currStat;
@@ -23,18 +29,36 @@ public class Car {
     }
 
     //methods
-    public void move(){
+
+    /**
+     * Calculates the car's position for next tic
+     * @return station the car moves to
+     */
+    public int move(){
         currStat += dir;
+        return currStat;
     }
 
+    /**
+     * Adds people to the car
+     * @param people list of people that enter the car
+     */
     public void addPassenger(ArrayList<Person> people){
         people.addAll(people);
     }
 
-    public ArrayList<Person> dropPassenger(int station){
+    /**
+     * 
+     * @return ArrayList of people dropped off.
+     * If the car reaches the end, it returns all of it's passengers.
+     * If it is not at the end, it drops of all passengers that need to be dropped at the station
+     */
+    public ArrayList<Person> dropPassenger(){
         ArrayList<Person> droppedOff = new ArrayList<Person>();
-        if(station == endStat){
-            return people;
+        if(currStat == endStat){
+            droppedOff = (ArrayList) people.clone();
+            people.clear();
+            return droppedOff;
         }
         else{
             for(int i = people.size() - 1; i > -1; i++){
@@ -50,7 +74,7 @@ public class Car {
     public ArrayList<Person> passengerHandle(int station, ArrayList<Person> people){
         ArrayList<Person> droppedOff = new ArrayList<Person>();
         addPassenger(people);
-        droppedOff = dropPassenger(station);
+        droppedOff = dropPassenger();
         return droppedOff;
     }
 
