@@ -21,7 +21,20 @@ public class Station {
     }
 
     //methods
-
+    public void takePassengers(){
+        ArrayList<Person> arrivals;
+        for(int i = 0; i < carsWaiting.size(); i++){
+            arrivals = carsWaiting.get(i).dropPassenger();
+            for(int j = 0; j < arrivals.size() j++){
+                if(arrivals.get(j).getStation() == myId){
+                    peopleCompleted.add(arrivals.get(j));
+                }
+                else{
+                    peopleWaiting.add(arrivals.get(j));
+                }
+            }
+        }
+    }
 
     
 }
