@@ -48,7 +48,22 @@ public class Station {
     }
 
     public void sendPassenders(){
-
+        for(int i = 0; i < carsWaiting.size() - 1; i++){
+            ArrayList<Person> loading = new ArrayList<Person>();
+            if(carsWaiting.get(i).getDir() == 1){
+                for(int j = 2; j > carsWaiting.get(i).getLoad(); j--){
+                    loading.add(peopleWaitingRight.get(j));
+                    peopleWaitingRight.remove(j);
+                }
+            }
+            else{
+                for(int j = 2; j > carsWaiting.get(i).getLoad(); j--){
+                    loading.add(peopleWaitingLeft.get(j));
+                    peopleWaitingLeft.remove(j);
+                }
+            }
+            carsWaiting.get(i).addPassenger(loading);
+        }
     }
 }
 
