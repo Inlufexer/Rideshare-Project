@@ -35,7 +35,9 @@ public class Car {
      * @return station the car moves to
      */
     public int move(){
-        currStat += dir;
+        if(currStat != endStat){
+            currStat += dir;
+        }
         return currStat;
     }
 
@@ -58,7 +60,6 @@ public class Car {
         if(currStat == endStat){
             droppedOff = (ArrayList) people.clone();
             people.clear();
-            return droppedOff;
         }
         else{
             for(int i = people.size() - 1; i > -1; i++){
