@@ -23,9 +23,9 @@ public class Station {
     //methods
     public void takePassengers(){
         ArrayList<Person> arrivals;
-        for(int i = 0; i < carsWaiting.size(); i++){
+        for(int i = carsWaiting.size(); i > -1; i--){
             arrivals = carsWaiting.get(i).dropPassenger();
-            for(int j = 0; j < arrivals.size() j++){
+            for(int j = 0; j < arrivals.size(); j++){
                 if(arrivals.get(j).getStation() == myId){
                     peopleCompleted.add(arrivals.get(j));
                 }
@@ -33,9 +33,18 @@ public class Station {
                     peopleWaiting.add(arrivals.get(j));
                 }
             }
+            if(carsWaiting.get(i).getEndStat() == myId){
+                carsCompleted.add(carsWaiting.get(i));
+                carsWaiting.remove(i);
+            }
         }
     }
 
-    
+    public void sendPassenders(){
+        
+    }
 }
+
+    
+
 

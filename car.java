@@ -72,15 +72,15 @@ public class Car {
         return droppedOff;
     }
 
-    public ArrayList<Person> passengerHandle(int station, ArrayList<Person> people){
-        ArrayList<Person> droppedOff = new ArrayList<Person>();
-        addPassenger(people);
-        droppedOff = dropPassenger();
-        return droppedOff;
+    public int carLoad(){
+        return people.size();
     }
 
-    public boolean full(){
-        return people.size() == maxPer;
+    public int getEndStat(){
+        return endStat;
     }
 
+    public int getDir(){
+        return dir;
+    }
 }
