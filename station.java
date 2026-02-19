@@ -2,7 +2,8 @@ import java.util.*;
 
 public class Station {
     //fields
-    private ArrayList<Person> peopleWaiting;
+    private ArrayList<Person> peopleWaitingRight;
+    private ArrayList<Person> peopleWaitingLeft;
     private ArrayList<Person> peopleCompleted;
     private ArrayList<Car> carsWaiting;
     private ArrayList<Car> carsCompleted;
@@ -12,7 +13,8 @@ public class Station {
     //constructor
     
     public Station(){
-        peopleWaiting = new ArrayList<Person>();
+        peopleWaitingRight = new ArrayList<Person>();
+        peopleWaitingLeft = new ArrayList<Person>();
         peopleCompleted = new ArrayList<Person>();
         carsWaiting = new ArrayList<Car>();
         carsCompleted = new ArrayList<Car>();
@@ -30,7 +32,12 @@ public class Station {
                     peopleCompleted.add(arrivals.get(j));
                 }
                 else{
-                    peopleWaiting.add(arrivals.get(j));
+                    if(arrivals.get(j).getStation() - myId > 0){
+                        peopleWaitingRight.add(arrivals.get(j));
+                    }
+                    else{
+                        peopleWaitingLeft.add(arrivals.get(j));
+                    }
                 }
             }
             if(carsWaiting.get(i).getEndStat() == myId){
@@ -41,7 +48,7 @@ public class Station {
     }
 
     public void sendPassenders(){
-        
+
     }
 }
 

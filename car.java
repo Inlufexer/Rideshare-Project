@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Car {
     //fields
-    private int maxPer;
     private int currStat;
     private int endStat;
     private int dir;
@@ -16,7 +15,6 @@ public class Car {
      * @param endStat Station at which the car ends
      */
     public Car(int currStat, int endStat){
-        maxPer = 3;
         this.currStat = currStat;
         this.endStat = endStat;
         people = new ArrayList<Person>();
@@ -72,7 +70,7 @@ public class Car {
         return droppedOff;
     }
 
-    public int carLoad(){
+    public int getLoad(){
         return people.size();
     }
 
