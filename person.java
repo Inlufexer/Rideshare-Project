@@ -11,4 +11,12 @@ public class Person{
     public int getStation(){
         return endStation;
     }
-}
+
+    public void changeEndStation(int i){
+        endStation = i;
+    }
+
+    public String toString(){
+        return "Dest: " + endStation;
+    }
+}   

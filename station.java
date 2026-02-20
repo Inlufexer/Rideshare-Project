@@ -65,6 +65,28 @@ public class Station {
             carsWaiting.get(i).addPassenger(loading);
         }
     }
+
+    public ArrayList<Car> sendCars(){
+        return carsWaiting;
+    }
+
+    public void takeCars(ArrayList<Car> incCars){
+        carsWaiting.clear();
+        carsWaiting.addAll(incCars);
+    }
+
+    public void takeCar(Car car){
+        carsWaiting.add(car);
+    }
+
+    public void addPassenger(Person person){
+        if(person.getStation() - myId > 0){
+                        peopleWaitingRight.add(person);
+                    }
+                    else{
+                        peopleWaitingLeft.add(person);
+                    }
+    }
 }
 
     

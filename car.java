@@ -70,6 +70,10 @@ public class Car {
         return droppedOff;
     }
 
+    public void changeEndStation(int station){
+        endStat = station;
+    }
+
     public int getLoad(){
         return people.size();
     }
