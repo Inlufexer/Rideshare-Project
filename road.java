@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Road {
     //fields
     Station[] stations;
@@ -32,7 +34,18 @@ public class Road {
     }
 
     public void runRoad(){
-        
+        ArrayList<Car> allCars = new ArrayList<Car>();
+        for(int i = 0; i < stations.length; i++){
+            stations[i].sendPassengers();
+            allCars.addAll(stations[i].sendCars());
+        }
+        for(int i = 0; i < allCars.size(); i++){
+            stations[i].takeCar(allCars.get(i));
+        }
+        allCars.clear();
+        for(int i = 0; i < stations.length; i++){
+            stations[i].takePassengers();
+        }
     }
 
     public String toString(){
