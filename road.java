@@ -1,5 +1,9 @@
 public class Road {
     //fields
-    Station[] stations = new Station[36];
-    
+    Station[] stations;
+
+    //constructor
+    public Road(){
+        stations = new Station[36];
+    }
 }
