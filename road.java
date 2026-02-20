@@ -31,7 +31,16 @@ public class Road {
         }
     }
 
-    public void moveCars(){
+    public void runRoad(){
         
+    }
+
+    public String toString(){
+        String s = "";
+        for(Station i : stations){
+            s += i.toString();
+            s+= "\n";
+        }
+        return s;
     }
 }

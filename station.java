@@ -51,13 +51,13 @@ public class Station {
         for(int i = 0; i < carsWaiting.size() - 1; i++){
             ArrayList<Person> loading = new ArrayList<Person>();
             if(carsWaiting.get(i).getDir() == 1){
-                for(int j = 2; j > carsWaiting.get(i).getLoad(); j--){
+                for(int j = 3; j > carsWaiting.get(i).getLoad(); j--){
                     loading.add(peopleWaitingRight.get(j));
                     peopleWaitingRight.remove(j);
                 }
             }
             else{
-                for(int j = 2; j > carsWaiting.get(i).getLoad(); j--){
+                for(int j = 3; j > carsWaiting.get(i).getLoad(); j--){
                     loading.add(peopleWaitingLeft.get(j));
                     peopleWaitingLeft.remove(j);
                 }
@@ -67,7 +67,9 @@ public class Station {
     }
 
     public ArrayList<Car> sendCars(){
-        return carsWaiting;
+        ArrayList<Car> sentCars = (ArrayList) carsWaiting.clone();
+        carsWaiting.clear();
+        return sentCars;
     }
 
     public void takeCars(ArrayList<Car> incCars){
@@ -81,11 +83,39 @@ public class Station {
 
     public void addPassenger(Person person){
         if(person.getStation() - myId > 0){
-                        peopleWaitingRight.add(person);
-                    }
-                    else{
-                        peopleWaitingLeft.add(person);
-                    }
+            peopleWaitingRight.add(person);
+            }
+        else{
+            peopleWaitingLeft.add(person);
+            }
+    }
+
+    public String toString(){
+        String s = "Station: " + myId + "\nPeople Waiting Left:";
+        for(Person p : peopleWaitingLeft){
+            s += "(" + p + ")";
+        }
+
+        s += "\nPeople Waiting Right: ";
+        for(Person p : peopleWaitingRight){
+            s += "(" + p + ")";
+        }
+        s += "\nPeople Finished: ";
+        for(Person p : peopleCompleted){
+            s += "(" + p + ")";
+        }
+
+        s += "\nCars Waiting: ";
+        for(Car c : carsWaiting){
+            s += "(" + c + ")";
+        }
+
+        s += "\nCars Finished: ";
+        for(Car c : carsCompleted){
+            s += "(" + c + ")";
+        }
+
+        return s;
     }
 }
 

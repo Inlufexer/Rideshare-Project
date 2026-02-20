@@ -60,7 +60,7 @@ public class Car {
             people.clear();
         }
         else{
-            for(int i = people.size() - 1; i > -1; i++){
+            for(int i = people.size() - 1; i > -1; i--){
                 if(currStat == people.get(i).getStation()){
                     droppedOff.add(people.get(i));
                     people.remove(i);
@@ -82,7 +82,18 @@ public class Car {
         return endStat;
     }
 
+    public int getStat(){
+        return currStat;
+    }
+
     public int getDir(){
         return dir;
+    }
+
+    public String toString(){
+        return "Station: " + currStat +
+        " End Station: " + endStat +
+        " Direction: " + dir +
+        " Load: " + getLoad();
     }
 }
