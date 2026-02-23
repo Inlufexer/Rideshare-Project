@@ -52,24 +52,21 @@ public class Station {
             ArrayList<Person> loading = new ArrayList<Person>();
             int loadAmount;
             if(carsWaiting.get(i).getDir() == 1 && !peopleWaitingRight.isEmpty()){
-                loadAmount = Math.min(carsWaiting.get(i).getLoad(), peopleWaitingRight.size());
-                //for(int j = 0; j < 3 - loadAmount; j++){
-                //    loading.add(peopleWaitingRight.get(j)); //Out of Bounds
-                //    peopleWaitingRight.remove(j);
-                //}
-                while(carsWaiting.get(i).getLoad() < 3){
-                    loading.add(peopleWaitingRight.get(0)); //Out of Bounds
+                loadAmount = Math.min(peopleWaitingRight.size(), carsWaiting.get(i).getLoad());
+                for(int j = 0; j < loadAmount; j++){
+                    loading.add(peopleWaitingRight.get(j));
+                }
+                for(int j = 0; j < loadAmount; j++){
                     peopleWaitingRight.remove(0);
                 }
             }
-            else if(!peopleWaitingLeft.isEmpty()){
-                loadAmount = Math.min(carsWaiting.get(i).getLoad(), peopleWaitingLeft.size());
-                //for(int j = 0; j < 3 - loadAmount; j++){
-                //    loading.add(peopleWaitingLeft.get(j)); //Out of Bounds
-                //    peopleWaitingLeft.remove(j);
-                //}
-                while(carsWaiting.get(i).getLoad() < 3){
-                    loading.add(peopleWaitingLeft.get(0)); //Out of Bounds
+
+            else if(carsWaiting.get(i).getDir() == -1 && !peopleWaitingLeft.isEmpty()){
+                loadAmount = Math.min(peopleWaitingLeft.size(), carsWaiting.get(i).getLoad());
+                for(int j = 0; j < loadAmount; j++){
+                    loading.add(peopleWaitingLeft.get(j));
+                }
+                for(int j = 0; j < loadAmount; j++){
                     peopleWaitingLeft.remove(0);
                 }
             }
