@@ -25,7 +25,7 @@ public class Station {
     //methods
     public void takePassengers(){
         ArrayList<Person> arrivals;
-        for(int i = carsWaiting.size(); i > -1; i--){
+        for(int i = carsWaiting.size() - 1; i > -1; i--){
             arrivals = carsWaiting.get(i).dropPassenger();
             for(int j = 0; j < arrivals.size(); j++){
                 if(arrivals.get(j).getStation() == myId){
@@ -48,21 +48,33 @@ public class Station {
     }
 
     public void sendPassengers(){
-        for(int i = 0; i < carsWaiting.size() - 1; i++){
+        for(int i = 0; i < carsWaiting.size(); i++){
             ArrayList<Person> loading = new ArrayList<Person>();
-            if(carsWaiting.get(i).getDir() == 1){
-                for(int j = 3; j > carsWaiting.get(i).getLoad(); j--){
-                    loading.add(peopleWaitingRight.get(j));
-                    peopleWaitingRight.remove(j);
+            int loadAmount;
+            if(carsWaiting.get(i).getDir() == 1 && !peopleWaitingRight.isEmpty()){
+                loadAmount = Math.min(carsWaiting.get(i).getLoad(), peopleWaitingRight.size());
+                //for(int j = 0; j < 3 - loadAmount; j++){
+                //    loading.add(peopleWaitingRight.get(j)); //Out of Bounds
+                //    peopleWaitingRight.remove(j);
+                //}
+                while(carsWaiting.get(i).getLoad() < 3){
+                    loading.add(peopleWaitingRight.get(0)); //Out of Bounds
+                    peopleWaitingRight.remove(0);
                 }
             }
-            else{
-                for(int j = 3; j > carsWaiting.get(i).getLoad(); j--){
-                    loading.add(peopleWaitingLeft.get(j));
-                    peopleWaitingLeft.remove(j);
+            else if(!peopleWaitingLeft.isEmpty()){
+                loadAmount = Math.min(carsWaiting.get(i).getLoad(), peopleWaitingLeft.size());
+                //for(int j = 0; j < 3 - loadAmount; j++){
+                //    loading.add(peopleWaitingLeft.get(j)); //Out of Bounds
+                //    peopleWaitingLeft.remove(j);
+                //}
+                while(carsWaiting.get(i).getLoad() < 3){
+                    loading.add(peopleWaitingLeft.get(0)); //Out of Bounds
+                    peopleWaitingLeft.remove(0);
                 }
             }
             carsWaiting.get(i).addPassenger(loading);
+            carsWaiting.get(i).move();
         }
     }
 
