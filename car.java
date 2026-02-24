@@ -61,7 +61,7 @@ public class Car {
         }
         else{
             for(int i = people.size() - 1; i > -1; i--){
-                if(currStat == people.get(i).getStation()){
+                if(currStat == people.get(i).getEndStation()){
                     droppedOff.add(people.get(i));
                     people.remove(i);
                 }

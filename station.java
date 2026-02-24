@@ -28,11 +28,11 @@ public class Station {
         for(int i = carsWaiting.size() - 1; i > -1; i--){
             arrivals = carsWaiting.get(i).dropPassenger();
             for(int j = 0; j < arrivals.size(); j++){
-                if(arrivals.get(j).getStation() == myId){
+                if(arrivals.get(j).getEndStation() == myId){
                     peopleCompleted.add(arrivals.get(j));
                 }
                 else{
-                    if(arrivals.get(j).getStation() - myId > 0){
+                    if(arrivals.get(j).getEndStation() - myId > 0){
                         peopleWaitingRight.add(arrivals.get(j));
                     }
                     else{
@@ -94,12 +94,24 @@ public class Station {
     }
 
     public void addPassenger(Person person){
-        if(person.getStation() - myId > 0){
+        if(person.getEndStation() - myId > 0){
             peopleWaitingRight.add(person);
             }
         else{
             peopleWaitingLeft.add(person);
             }
+    }
+
+    public void clear(){
+        peopleWaitingLeft.clear();
+        peopleWaitingRight.clear();
+        peopleCompleted.clear();
+        carsWaiting.clear();
+        carsCompleted.clear();
+    }
+
+    public int completed(){
+        return peopleCompleted.size();
     }
 
     public String toString(){

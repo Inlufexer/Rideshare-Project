@@ -18,7 +18,7 @@ public class Road {
         for(int i = 0; i < people - 1; i++){
             int station = (int)(Math.random() * stations.length);
             Person person = new Person((int)(Math.random() * stations.length));
-            while(person.getStation() == station){
+            while(person.getEndStation() == station){
                 person.changeEndStation((int)(Math.random() * stations.length));
             }
             stations[station].addPassenger(person);
@@ -50,6 +50,17 @@ public class Road {
         for(int i = 0; i < stations.length; i++){
             stations[i].takePassengers();
         }
+    }
+
+    public int resetRoad(){
+        int totalCompleted = 0;
+        for(int i = 0; i < stationCount(); i++){
+            totalCompleted += stations[i].completed();
+        }
+        for(int i = 0; i < stationCount(); i++){
+            stations[i].clear();
+        }
+        return totalCompleted;
     }
 
     public String toString(){

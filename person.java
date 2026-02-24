@@ -8,7 +8,7 @@ public class Person{
     }
 
     //methods
-    public int getStation(){
+    public int getEndStation(){
         return endStation;
     }
 
