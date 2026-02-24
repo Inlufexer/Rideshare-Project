@@ -44,7 +44,7 @@ public class Car {
      * @param people list of people that enter the car
      */
     public void addPassenger(ArrayList<Person> people){
-        people.addAll(people);
+        this.people.addAll(people);
     }
 
     /**

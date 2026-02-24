@@ -50,9 +50,10 @@ public class Station {
     public void sendPassengers(){
         for(int i = 0; i < carsWaiting.size(); i++){
             ArrayList<Person> loading = new ArrayList<Person>();
+            int capacity = 3 - carsWaiting.get(i).getLoad();
             int loadAmount;
             if(carsWaiting.get(i).getDir() == 1 && !peopleWaitingRight.isEmpty()){
-                loadAmount = Math.min(peopleWaitingRight.size(), carsWaiting.get(i).getLoad());
+                loadAmount = Math.min(peopleWaitingRight.size(), capacity);
                 for(int j = 0; j < loadAmount; j++){
                     loading.add(peopleWaitingRight.get(j));
                 }
@@ -61,8 +62,8 @@ public class Station {
                 }
             }
 
-            else if(carsWaiting.get(i).getDir() == -1 && !peopleWaitingLeft.isEmpty()){
-                loadAmount = Math.min(peopleWaitingLeft.size(), carsWaiting.get(i).getLoad());
+            if(carsWaiting.get(i).getDir() == -1 && !peopleWaitingLeft.isEmpty()){
+                loadAmount = Math.min(peopleWaitingLeft.size(), capacity);
                 for(int j = 0; j < loadAmount; j++){
                     loading.add(peopleWaitingLeft.get(j));
                 }
@@ -70,7 +71,9 @@ public class Station {
                     peopleWaitingLeft.remove(0);
                 }
             }
-            carsWaiting.get(i).addPassenger(loading);
+            if(!loading.isEmpty()){
+                carsWaiting.get(i).addPassenger(loading);
+            }
             carsWaiting.get(i).move();
         }
     }

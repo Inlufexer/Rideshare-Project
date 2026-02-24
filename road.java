@@ -5,9 +5,9 @@ public class Road {
     Station[] stations;
 
     //constructor
-    public Road(){
-        stations = new Station[4];
-        for(int i = 0; i < 4; i++){
+    public Road(int stationCount){
+        stations = new Station[stationCount];
+        for(int i = 0; i < stationCount; i++){
             stations[i] = new Station();
         }
     }
@@ -16,10 +16,10 @@ public class Road {
 
     public void populatePeople(int people){
         for(int i = 0; i < people - 1; i++){
-            int station = (int)(Math.random() * 4);
-            Person person = new Person((int)(Math.random() * 4));
+            int station = (int)(Math.random() * stations.length);
+            Person person = new Person((int)(Math.random() * stations.length));
             while(person.getStation() == station){
-                person.changeEndStation((int)(Math.random() * 4));
+                person.changeEndStation((int)(Math.random() * stations.length));
             }
             stations[station].addPassenger(person);
         }
@@ -27,9 +27,9 @@ public class Road {
 
     public void populateCars(int cars){
         for(int i = 0; i < cars; i++){
-            Car car = new Car((int)(Math.random() * 4), (int)(Math.random() * 4));
-            if(car.getEndStat() == car.getStat()){
-                car.changeEndStation((int)(Math.random() * 4));
+            Car car = new Car((int)(Math.random() * stations.length), (int)(Math.random() * stations.length));
+            while(car.getEndStat() == car.getStat()){
+                car.changeEndStation((int)(Math.random() * stations.length));
             }
             stations[car.getStat()].takeCar(car);
         }
@@ -56,5 +56,9 @@ public class Road {
             s+= "\n__________\n";
         }
         return s;
+    }
+
+    public int stationCount(){
+        return stations.length;
     }
 }
