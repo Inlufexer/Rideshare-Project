@@ -12,6 +12,9 @@ public class Station {
 
     //constructor
     
+    /**
+     * The constructor for the Station class
+     */
     public Station(){
         peopleWaitingRight = new ArrayList<Person>();
         peopleWaitingLeft = new ArrayList<Person>();
@@ -23,6 +26,11 @@ public class Station {
     }
 
     //methods
+    /**
+     * Loops through all the cars and calls dropPassenger on them.
+     * People are sorted into peopleWaitingRight, peopleWaitingLeft, and peopleCompleted based on the current station and their ending station.
+     * Cars are also sorted into carsCompleted if they have reached their destination.
+     */
     public void takePassengers(){
         ArrayList<Person> arrivals;
         for(int i = carsWaiting.size() - 1; i > -1; i--){
@@ -47,6 +55,9 @@ public class Station {
         }
     }
 
+    /**
+     * Loops through all the cars and calls addPassenger on them. The people added are going in the same direction as the car
+     */
     public void sendPassengers(){
         for(int i = 0; i < carsWaiting.size(); i++){
             ArrayList<Person> loading = new ArrayList<Person>();
@@ -78,21 +89,39 @@ public class Station {
         }
     }
 
+    /**
+     * Removes all cars from the station
+     * @return List of cars that were in the station before removal
+     */
     public ArrayList<Car> sendCars(){
         ArrayList<Car> sentCars = (ArrayList) carsWaiting.clone();
         carsWaiting.clear();
         return sentCars;
     }
 
+    /**
+     * The station adds all incoming cars to carsWaiting
+     * @param incCars ArrayList of incoming cars
+     */
     public void takeCars(ArrayList<Car> incCars){
         carsWaiting.clear();
         carsWaiting.addAll(incCars);
     }
 
+    /**
+     * The station adds a singular car to carsWaiting.
+     * Used for populateCars.
+     * @param car incoming car
+     */
     public void takeCar(Car car){
         carsWaiting.add(car);
     }
 
+    /**
+     * The station accepts a singular person and sorts them.
+     * Used for populatePeople.
+     * @param person person added to the station
+     */
     public void addPassenger(Person person){
         if(person.getEndStation() - myId > 0){
             peopleWaitingRight.add(person);
@@ -102,6 +131,9 @@ public class Station {
             }
     }
 
+    /**
+     * Clears the station by removing everything from all lists.
+     */
     public void clear(){
         peopleWaitingLeft.clear();
         peopleWaitingRight.clear();
@@ -110,6 +142,10 @@ public class Station {
         carsCompleted.clear();
     }
 
+    /**
+     * Returns amount of people that have ended their journy at this station.
+     * @return peopleCompleted.size()
+     */
     public int completed(){
         return peopleCompleted.size();
     }

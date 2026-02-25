@@ -2,15 +2,15 @@ import java.util.*;
 
 public class Car {
     //fields
-    private int currStat;
-    private int endStat;
-    private int dir;
-    private ArrayList<Person> people;
+    private int currStat; //current station
+    private int endStat; //end station
+    private int dir; //direction
+    private ArrayList<Person> people; //list of passengers
 
     //constructor
 
     /**
-     * 
+     * The constructor for the Car class
      * @param currStat Station at which the car is located
      * @param endStat Station at which the car ends
      */
@@ -48,10 +48,9 @@ public class Car {
     }
 
     /**
-     * 
-     * @return ArrayList of people dropped off.
      * If the car reaches the end, it returns all of it's passengers.
      * If it is not at the end, it drops of all passengers that need to be dropped at the station
+     * @return ArrayList of people dropped off
      */
     public ArrayList<Person> dropPassenger(){
         ArrayList<Person> droppedOff = new ArrayList<Person>();
@@ -69,23 +68,42 @@ public class Car {
         }
         return droppedOff;
     }
-
+    /**
+     * Changes the car's endStation
+     * @param station the car's new endStation
+     */
     public void changeEndStation(int station){
         endStat = station;
     }
 
+    /**
+     * Gets the number of passengers
+     * @return people.size()
+     */
     public int getLoad(){
         return people.size();
     }
 
+    /**
+     * Gets the end station
+     * @return endStat
+     */
     public int getEndStat(){
         return endStat;
     }
 
+    /**
+     * Gets the current station
+     * @return currStat
+     */
     public int getStat(){
         return currStat;
     }
 
+    /**
+     * Gets the direction
+     * @return dir
+     */
     public int getDir(){
         return dir;
     }
