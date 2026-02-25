@@ -19,7 +19,7 @@ public class Road {
             int station = (int)(Math.random() * stations.length);
             Person person = new Person((int)(Math.random() * stations.length));
             while(person.getEndStation() == station){
-                person.changeEndStation((int)(Math.random() * stations.length));
+                station = (int) (Math.random() * stations.length);
             }
             stations[station].addPassenger(person);
         }
@@ -27,10 +27,10 @@ public class Road {
 
     public void populateCars(int cars){
         for(int i = 0; i < cars; i++){
-            int station = (int) Math.random() * stations.length;
-            int endStation = (int) Math.random() * stations.length;
+            int station = (int) (Math.random() * stations.length);
+            int endStation = (int) (Math.random() * stations.length);
             while(station == endStation){
-                endStation = (int) Math.random() * stations.length;
+                endStation = (int) (Math.random() * stations.length);
             }
             Car car = new Car(station, endStation);
             stations[car.getStat()].takeCar(car);
@@ -44,7 +44,6 @@ public class Road {
             allCars.addAll(stations[i].sendCars());
         }
         for(int i = 0; i < allCars.size(); i++){    
-            System.out.println(allCars.get(i).getStat() + "/" + i);
             stations[allCars.get(i).getStat()].takeCar(allCars.get(i));
         }
         for(int i = 0; i < stations.length; i++){
