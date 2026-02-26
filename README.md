@@ -5,8 +5,9 @@
 This program simulates a road populated with 32 stations, 50 people, and either 20 or 40 cars, depending on the simulation. Cars and people want to go to an ending station. A car can hold up to 3 people. It picks up anyone going in the same direction and drops them off at their ending station. At a station, passengers are grouped into going right, left, or finished. Once the car reaches its end, it drops of everyone and joins its end station's finished group.
 
 ## Simulation Results
-- 20 Car Sim Passenger Completion Rate: 0.57444
-- 40 Car Sim Passenger Completion Rate: 0.78364
+### 1,000,000 Repeats
+- 20 Car Sim Passenger Completion Rate: 0.56892462
+- 40 Car Sim Passenger Completion Rate: 0.78378344
 
 ## Favorite Parts of Program
 
