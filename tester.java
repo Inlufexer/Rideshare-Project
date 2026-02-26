@@ -3,7 +3,7 @@ public class Tester {
         Road r = new Road(32);
         
 
-        int repeats = 500;
+        int repeats = 1000;
         int totalCompleted20 = 0;
         int totalCompleted40 = 0;
 

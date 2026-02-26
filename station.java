@@ -85,7 +85,6 @@ public class Station {
             if(!loading.isEmpty()){
                 carsWaiting.get(i).addPassenger(loading);
             }
-            carsWaiting.get(i).move();
         }
     }
 
@@ -94,6 +93,9 @@ public class Station {
      * @return List of cars that were in the station before removal
      */
     public ArrayList<Car> sendCars(){
+        for(Car car : carsWaiting){
+            car.move();
+        }
         ArrayList<Car> sentCars = (ArrayList) carsWaiting.clone();
         carsWaiting.clear();
         return sentCars;
