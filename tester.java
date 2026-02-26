@@ -3,7 +3,7 @@ public class Tester {
         Road r = new Road(32);
         
 
-        int repeats = 1000000;
+        int repeats = 1000;
         int totalCompleted20 = 0;
         int totalCompleted40 = 0;
 
@@ -12,11 +12,11 @@ public class Tester {
             r.populateCars(20);
             
             for(int j = 0; j < r.stationCount(); j++){
-                //System.out.println(r.toString());
+                System.out.println(r.toString());
                 r.runRoad();
             }
 
-            //System.out.println(r.toString());
+            System.out.println(r.toString());
             totalCompleted20 += r.resetRoad();
         }
         System.out.println("_________________\nNew Sim\n_________________");
@@ -26,11 +26,11 @@ public class Tester {
             r.populateCars(40);
             
             for(int j = 0; j < r.stationCount(); j++){
-                //System.out.println(r.toString());
+                System.out.println(r.toString());
                 r.runRoad();
             }
 
-            //System.out.println(r.toString());
+            System.out.println(r.toString());
             totalCompleted40 += r.resetRoad();
         }
         
