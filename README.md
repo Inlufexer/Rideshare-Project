@@ -11,4 +11,4 @@ This program simulates a road populated with 32 stations, 50 people, and either 
 
 ## Favorite Parts of Program
 
-I am very proud of my station class. It took the most work by far. The method that I am most proud of is staiton's sendPassengers. It took a while to figure out how to loop through the passengers and assign them to the correct car. Station was also where I encountered the most challenges.
+I am very proud of my station class. It took the most work by far. The method that I am most proud of is station's sendPassengers. It took a while to figure out how to loop through the passengers and assign them to the correct car. Station was also where I encountered the most challenges.
